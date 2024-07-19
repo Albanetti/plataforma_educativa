@@ -1,1 +1,1 @@
-web: gunicorn plataforma_educativa.wsgi 
+web: gunicorn plataforma_educativa.wsgi
