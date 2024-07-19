@@ -1,0 +1,16 @@
+{% extends 'gestion_academica/base.html' %}
+
+{% block title %}Inicio{% endblock %}
+
+{% block content %}
+    <h1>Cursos</h1>
+    <ul>
+        {% for curso in cursos %}
+            <li><a href="{% url 'curso_detail' curso.id %}">{{ curso.nombre }}</a></li>
+        {% endfor %}
+    </ul>
+    <a class="btn btn-primary" href="{% url 'add_curso' %}">Agregar Curso</a>
+    <a class="btn btn-secondary" href="{% url 'add_alumno' %}">Agregar Alumno</a>
+    <a class="btn btn-success" href="{% url 'add_asignatura' %}">Agregar Asignatura</a>
+    <a class="btn btn-info" href="{% url 'export_data' %}">Exportar Datos a Excel</a>
+{% endblock %}

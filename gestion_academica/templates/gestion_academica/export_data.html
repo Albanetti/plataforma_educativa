@@ -1,0 +1,28 @@
+{% extends 'gestion_academica/base.html' %}
+
+{% block title %}Exportar Datos{% endblock %}
+
+{% block content %}
+<h1>Exportar Datos</h1>
+<form method="post">
+    {% csrf_token %}
+    <div class="form-group">
+        <label for="curso">Curso:</label>
+        <select class="form-control" id="curso" name="curso" required>
+            {% for curso in cursos %}
+                <option value="{{ curso.id }}">{{ curso.nombre }}</option>
+            {% endfor %}
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="asignatura">Asignatura:</label>
+        <select class="form-control" id="asignatura" name="asignatura" required>
+            {% for asignatura in asignaturas %}
+                <option value="{{ asignatura.id }}">{{ asignatura.nombre }}</option>
+            {% endfor %}
+        </select>
+    </div>
+    <button type="submit" class="btn btn-primary">Exportar</button>
+</form>
+<a href="{% url 'index' %}" class="btn btn-secondary">Volver al Inicio</a>
+{% endblock %}

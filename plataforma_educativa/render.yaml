@@ -1,0 +1,11 @@
+services:
+  - type: web
+    name: gestion-academica
+    env: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn plataforma_educativa.wsgi
+    envVars:
+      - key: DJANGO_SETTINGS_MODULE
+        value: plataforma_educativa.settings
+      - key: SECRET_KEY
+        value: @Ag14081991

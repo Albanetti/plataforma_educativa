@@ -1,0 +1,29 @@
+{% extends 'gestion_academica/base.html' %}
+
+{% block title %}Detalle del Curso{% endblock %}
+
+{% block content %}
+    <h1>Curso: {{ curso.nombre }}</h1>
+    <h2>Alumnos</h2>
+    <ul class="list-group mb-3">
+        {% for alumno in alumnos %}
+            <li class="list-group-item">
+                <a href="{% url 'alumno_detail' alumno.id %}">{{ alumno.nombre }}</a>
+            </li>
+        {% endfor %}
+    </ul>
+    <h2>Asignaturas</h2>
+    <ul class="list-group">
+        {% for asignatura in asignaturas %}
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+                {{ asignatura.nombre }} - {{ asignatura.profesor.nombre }}
+                <span>
+                    <a class="btn btn-sm btn-warning" href="{% url 'edit_asignatura' pk=asignatura.id %}">Editar</a>
+                    <a class="btn btn-sm btn-danger" href="{% url 'delete_asignatura' pk=asignatura.id %}">Eliminar</a>
+                </span>
+            </li>
+        {% endfor %}
+    </ul>
+    <a class="btn btn-primary mt-3" href="{% url 'add_alumno' %}">Agregar Alumno</a>
+    <a class="btn btn-secondary mt-3" href="{% url 'add_asignatura' %}">Agregar Asignatura</a>
+{% endblock %}
